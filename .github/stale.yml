@@ -1,0 +1,16 @@
+# Number of days of inactivity before an issue becomes stale
+daysUntilStale: 30
+# Number of days of inactivity before a stale issue is closed
+daysUntilClose: 7
+# Issues with these labels will never be considered stale
+exemptLabels:
+  - pinned
+  - security
+# Label to use when marking an issue as stale
+staleLabel: stale
+# Comment to post when marking an issue as stale. Set to `false` to disable
+markComment: |
+  这个 Issue 由于长期不活跃，即将被自动关闭。谢谢您的评论参与。
+  💖 如果您在（或期望来）南京，又恰巧在看工作机会，可以把您的简历发送至 i@sh.gg
+# Comment to post when closing a stale issue. Set to `false` to disable
+closeComment: false
