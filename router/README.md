@@ -1,6 +1,6 @@
 # <img height=24 src=https://cdn.rawgit.com/jorgebucaran/f53d2c00bafcf36e84ffd862f0dc2950/raw/882f20c970ff7d61aa04d44b92fc3530fa758bc0/Hyperapp.svg> @hyperapp/router
 
-> 本文翻译自 [Github](https://github.com/hyperapp/hyperapp) 项目 v0.4.1 主页介绍，后续章节针对一些特性及最佳实践进行展开介绍。
+> 本文翻译自 [Github](https://github.com/hyperapp/router) 项目 v0.4.1 主页介绍，后续章节针对一些特性及最佳实践进行展开介绍。
 
 @hyperapp/router 使用 [History API](https://developer.mozilla.org/zh-CN/docs/Web/API/History) 提供 [Hyperapp](https://github.com/hyperapp/hyperapp) 的路由申明。
 
@@ -262,7 +262,7 @@ const NoMatchExample = (
 )
 ```
 
-## 模块（Modules）
+## 模块
 
 ### location
 

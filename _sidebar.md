@@ -4,6 +4,6 @@
   - [Module语法](basic/module.md)
 - [Hyperapp](hyperapp/README.md)
   - [视图及组件](hyperapp/components.md)
-- FX
+- [FX](fx/README.md)
 - [路由 Router](router/README.md)
 - 国际化 i18n
