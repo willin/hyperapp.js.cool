@@ -1,6 +1,6 @@
 # <img height=24 src=https://cdn.rawgit.com/jorgebucaran/f53d2c00bafcf36e84ffd862f0dc2950/raw/882f20c970ff7d61aa04d44b92fc3530fa758bc0/Hyperapp.svg> hyperapp-i18n
 
-> 本文翻译自 [Github](https://github.com/willin/hyperapp-i18n) 项目 v0.0.2 主页介绍，后续章节针对一些特性及最佳实践进行展开介绍。
+> 本文翻译自 [Github](https://github.com/willin/hyperapp-i18n) 项目 v0.1.0 主页介绍，后续章节针对一些特性及最佳实践进行展开介绍。
 
 
 ## 安装
