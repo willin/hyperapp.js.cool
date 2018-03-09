@@ -6,4 +6,4 @@
   - [视图及组件](hyperapp/components.md)
 - [FX](fx/README.md)
 - [路由 Router](router/README.md)
-- 国际化 i18n
+- [国际化 i18n](i18n/README.md)
