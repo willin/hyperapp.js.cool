@@ -48,3 +48,36 @@ const view = (state, actions) => (
   </div>
 )
 ```
+
+## 最佳实践
+
+在视图中使用 State 时，在内部进行解构赋值，将完整的 State 传递给下一个子组件，这样能够保证子组件拿到的 State 结构一致，避免开发过程中的一些失误。
+
+```js
+// 在最里层子组件可以直接解构赋值使用
+// 但并不推荐，因为你永远不知道这个子组件以后下面是否还会再加一个子组件
+const SubModule = ({ state }) => {
+  // 在这里进行解构赋值操作
+  const {
+    // ...
+  } = state;
+  return (
+    <div>Test</div>
+  )
+};
+
+const view = (state) => {
+  // 在这里进行解构赋值操作
+  const {
+    // ...
+  } = state;
+  return (
+    <div>
+      <!-- 在此处可以完整传递 state 到子组件 -->
+      <SubModule state={state} />
+    </div>
+  );
+}
+```
+
+在这里，我并没有进行 Actions 对象的传递，可以参考后续更新的 [FX](/fx/README) 章节来具体深入了解。
