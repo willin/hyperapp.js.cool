@@ -69,3 +69,7 @@ const { data: { tickets: [ ticket = {} ] } } = data;
 // ticket = {} 给 ticket 赋默认值，如果外层对象可能为空或不存在，则也需要赋默认值
 console.log(ticket);
 ```
+
+参考资料：
+
+- [Spread 语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_operator)

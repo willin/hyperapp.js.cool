@@ -8,7 +8,7 @@ Hyperapp 是一个构建 Web 应用的微型 JS 框架。
 * **实用** — Hyperapp 坚持专注在函数式编程进行前端状态（State）管理， 以实用主义的态度考虑允许的副作用、异步行为（Actions）和 DOM 操作。
 * **独立** — 麻雀虽小，五脏俱全。 Hyperapp 以一个虚拟 DOM 引擎来配合状态（State）管理，允许关键数据更新和生命周期事件（Events）——都无须额外依赖。
 
-
+<a name="getting-started" id="getting-started"></a>
 ## 起步
 
 我们的第一个示例代码是一个可增、减的计数器。 可以先试试[在线运行案例](https://codepen.io/hyperapp/pen/zNxZLP/left/?editors=0010)。
@@ -179,9 +179,9 @@ const actions = {
 
 #### 互用性
 
-The <samp>app</samp> function returns a copy of your actions where every function is wired to changes in the state. Exposing this object to the outside world can be useful to operate your application from another program or framework, subscribe to global events, listen to mouse and keyboard input, etc.
+<samp>app</samp> 方法返回一个所有操作状态的动作的副本。 将这个对象暴露到外部可以对于其他程序或框架操作你的应用，订阅全局事件，侦听鼠标、键盘操作等很有用。
 
-To see this in action, modify the example from [Getting Started](#getting-started) to save the wired actions to a variable and try using them. You should see the counter update accordingly.
+这里有个根据 [起步](#getting-started) 修改的示例，将动作保存到一个变量中并使用它们，你可以看到计数器相应的更新。
 
 ```jsx
 const main = app(state, actions, view, document.body)
@@ -193,7 +193,7 @@ setInterval(main.down, 500, 1)
 <a name="view" id="view"></a>
 ### 视图
 
-Every time your application state changes, the view function is called so that you can specify how you want the DOM to look based on the new state. The view returns your specification in the form of a plain JavaScript object known as a virtual DOM and Hyperapp takes care of updating the actual DOM to match it.
+每次应用状态更改时，视图方法会被调用，因此你可以指定 DOM 节点变成你期望的样子。视图用 js 对象形式返回你定义的虚拟 DOM， HyperApp 来掌管更新匹配的实际 DOM。
 
 ```js
 import { h } from "hyperapp"
@@ -206,7 +206,7 @@ export const view = (state, actions) =>
   ])
 ```
 
-A virtual DOM is a description of what a DOM should look like using a tree of nested JavaScript objects known as virtual nodes. Think of it as a lightweight representation of the DOM. In the example, the view function returns and object like this.
+虚拟 DOM 是描述 DOM 具体样子的嵌套 JS 对象（虚拟节点）的树。可以把它当做一个轻量级的 DOM 呈现。 在示例中， 视图方法返回的对象是像这个样子的：
 
 ```jsx
 {
@@ -232,22 +232,22 @@ A virtual DOM is a description of what a DOM should look like using a tree of ne
 }
 ```
 
-The virtual DOM model allows us to write code as if the entire document is thrown away and rebuilt on each change, while we only update what actually changed. We try to do this in the least number of steps possible, by comparing the new virtual DOM against the previous one. This leads to high efficiency, since typically only a small percentage of nodes need to change, and changing real DOM nodes is costly compared to recalculating the virtual DOM.
+虚拟 DOM 模型循序我们像变更产生时整个文档丢弃并重建的样子去书写代码，但我们实际值更新了变化的部分。我们视图通过比较新旧虚拟 DOM 尽量减少步骤。由于通常只有一小部分的节点需要变更，而改变实际 DOM 节点的开销会比虚拟节点大很多，所以这会变得更加高效。
 
-It may seem wasteful to throw away the old virtual DOM and re-create it entirely on every update — not to mention the fact that at any one time, Hyperapp is keeping two virtual DOM trees in memory, but as it turns out, browsers can create hundreds of thousands of objects very quickly. On the other hand, modifying the DOM is several orders of magnitude more expensive.
+可能看上去每次更新时丢弃虚拟 DOM 并整体重建是一种浪费，但没提到的是，实际上在任何时间， Hyperapp 同时在内存中维护两个虚拟 DOM 树，而且事实上，浏览器可以很快的创建成百上千的对象。 另一方面，修改 DOM 的代价要高出几个数量级。
 
 <a name="mounting" id="mouting"></a>
 ### 挂载
 
-To mount your application in a page, we need a DOM element. This element is referred to as the application container. Applications built with Hyperapp always have a single container.
+在页面上挂载你的应用需要一个 DOM 元素。这个元素会被当做应用的容器。 Hyperapp 应用始终需要一个单一的容器挂载。ntainer. Applications built with Hyperapp always have a single container.
 
 ```jsx
 app(state, actions, view, container)
 ```
 
-Hyperapp will also attempt to reuse existing elements inside the container enabling SEO optimization and improving your sites time-to-interactive. The process consists of serving a fully rendered page together with your application. Then instead of throwing away the existing content, we'll turn your DOM nodes into an interactive application out of the box.
+Hyperapp 会尝试复用现有容器内部元素来进行 SEO 优化及提升网站交互时间。这个处理过程包含了与应用程序一起提供完全呈现的页面。然后，我们不再将现有内容丢弃，而是将您的 DOM 节点变成一个交互式应用程序。
 
-This is how we can recycle server-rendered content out the counter example from before. See [Getting Started](#getting-started) for the application code.
+这就是我们如何从以前的反例中回收服务器提供的内容。查看[起步](#getting-started)的应用程序代码。
 
 ```html
 <!doctype html>
@@ -269,9 +269,9 @@ This is how we can recycle server-rendered content out the counter example from 
 
 ### 组件（Components）
 
-A component is a pure function that returns a virtual node. Unlike the view function, components are not wired to your application state or actions. Components are dumb, reusable blocks of code that encapsulate markup, styles and behaviors that belong together.
+组件是返回虚拟节点的纯函数。与视图函数不同，组件没有连接到应用程序状态或操作。组件是哑的、可重用的代码块，它们封装属于一起的标记、样式和行为。
 
-Here's a taste of how to use components in your application. The application is a typical To-Do manager. Go ahead and [try it online here](https://codepen.io/hyperapp/pen/zNxRLy).
+下面介绍一下如何在应用程序中使用组件。经典的 TO-DO 管理，[在线运行示例](https://codepen.io/hyperapp/pen/zNxRLy)。
 
 ```jsx
 import { h } from "hyperapp"
@@ -302,7 +302,9 @@ export const view = (state, actions) => (
 )
 ```
 
-If you don't know all the attributes that you want to place in a component ahead of time, you can use the [spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator). Note that Hyperapp components can return multiple elements as in the following example. This technique lets you group a list of children without adding extra nodes to the DOM.
+如果您不知道要提前在组件中放置的所有属性，可以使用[展开（Spread）语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_operator)。
+
+注意，Hyperapp组件可以返回多个元素，如以下示例。此技术允许您在不添加 DOM 的额外节点的情况下分组子列表。
 
 ```jsx
 const TodoList = ({ todos, toggle }) =>
@@ -311,7 +313,7 @@ const TodoList = ({ todos, toggle }) =>
 
 #### 懒加载组件
 
-Components can only receive attributes and children from their parent component. Similarly to the top-level view function, lazy components are passed your application global state and actions. To create a lazy component, return a view function from a regular component.
+组件只能从父组件接收属性和子元素。类似于顶层视图函数，延迟组件通过您的应用程序全局状态和动作。要创建一个延迟组件，请从一个常规组件返回一个视图函数。
 
 ```jsx
 import { h } from "hyperapp"
@@ -340,7 +342,7 @@ export const view = (state, actions) => (
 
 #### 子组件
 
-Components receive their children elements via the second argument allowing you and other components pass arbitrary children down to them.
+组件通过第二个参数接收其子元素，从而允许您和其他组件将任意的子组件传递给它们。
 
 ```jsx
 const Box = ({ color }, children) => (
@@ -356,14 +358,16 @@ const HelloBox = ({ name }) => (
 
 ## 支持的属性
 
-Supported attributes include [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes), [SVG attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute), [DOM events](https://developer.mozilla.org/en-US/docs/Web/Events), [Lifecycle Events](#lifecycle-events), and [Keys](#keys). Note that non-standard HTML attribute names are not supported, <samp>onclick</samp> and <samp>class</samp> are valid, but <samp>onClick</samp> or <samp>className</samp> are not.
+支持的属性包括 [HTML 属性](https://developer.mozilla.org/ zh-CN/docs/Web/HTML/Attributes)、 [SVG 属性](https://developer.mozilla.org/ zh-CN/docs/Web/SVG/Attribute)、 [DOM events](https://developer.mozilla.org/ zh-CN/docs/Web/Events)、 [生命周期事件](#lifecycle-events) 和 [标识符](#keys)。
 
-### Styles
+注意：非标准 HTML 属性是不支持的， <samp>onclick</samp> 和 <samp>class</samp> 是合法的，但 <samp>onClick</samp> 或 <samp>className</samp> 则不是。
+
+### 样式（Style）
 
 The <samp>style</samp> attribute expects a plain object rather than a string as in HTML.
 Each declaration consists of a style name property written in <samp>camelCase</samp> and a value. CSS variables are currently not supported. See [#612](https://github.com/hyperapp/hyperapp/pull/612) for options.
 
-Individual style properties will be diffed and mapped against <samp>[HTMLElement.style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)</samp> property members of the DOM element - you should therefore use the JavaScript style object [property names](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference), e.g. <samp>backgroundColor</samp> rather than <samp>background-color</samp>.
+Individual style properties will be diffed and mapped against <samp>[HTMLElement.style](https://developer.mozilla.org/ zh-CN/docs/Web/API/HTMLElement/style)</samp> property members of the DOM element - you should therefore use the JavaScript style object [property names](https://developer.mozilla.org/ zh-CN/docs/Web/CSS/CSS_Properties_Reference), e.g. <samp>backgroundColor</samp> rather than <samp>background-color</samp>.
 
 ```jsx
 import { h } from "hyperapp"
