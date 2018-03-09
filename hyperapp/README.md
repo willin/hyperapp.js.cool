@@ -1,4 +1,4 @@
-# <img height=24 src=https://cdn.rawgit.com/jorgebucaran/f53d2c00bafcf36e84ffd862f0dc2950/raw/882f20c970ff7d61aa04d44b92fc3530fa758bc0/Hyperapp.svg> HyperApp
+# <img height=24 src=https://cdn.rawgit.com/jorgebucaran/f53d2c00bafcf36e84ffd862f0dc2950/raw/882f20c970ff7d61aa04d44b92fc3530fa758bc0/Hyperapp.svg> Hyperapp
 
 > 本文翻译自 [Github](https://github.com/hyperapp/hyperapp) 项目主页介绍，后续章节针对一些特性及最佳实践进行展开介绍。
 
@@ -193,7 +193,7 @@ setInterval(main.down, 500, 1)
 <a name="view" id="view"></a>
 ### 视图
 
-每次应用状态更改时，视图方法会被调用，因此你可以指定 DOM 节点变成你期望的样子。视图用 js 对象形式返回你定义的虚拟 DOM， HyperApp 来掌管更新匹配的实际 DOM。
+每次应用状态更改时，视图方法会被调用，因此你可以指定 DOM 节点变成你期望的样子。视图用 js 对象形式返回你定义的虚拟 DOM， Hyperapp 来掌管更新匹配的实际 DOM。
 
 ```js
 import { h } from "hyperapp"
@@ -364,10 +364,7 @@ const HelloBox = ({ name }) => (
 
 ### 样式（Style）
 
-The <samp>style</samp> attribute expects a plain object rather than a string as in HTML.
-Each declaration consists of a style name property written in <samp>camelCase</samp> and a value. CSS variables are currently not supported. See [#612](https://github.com/hyperapp/hyperapp/pull/612) for options.
-
-Individual style properties will be diffed and mapped against <samp>[HTMLElement.style](https://developer.mozilla.org/ zh-CN/docs/Web/API/HTMLElement/style)</samp> property members of the DOM element - you should therefore use the JavaScript style object [property names](https://developer.mozilla.org/ zh-CN/docs/Web/CSS/CSS_Properties_Reference), e.g. <samp>backgroundColor</samp> rather than <samp>background-color</samp>.
+<samp>style</samp> 标签传入一个 JS 对象二部是 HTML 字符串。每个包含的样式申明名称属性需要以驼峰（<samp>camelCase</samp>）命名。暂不支持 CSS 变量。参考 [#612](https://github.com/hyperapp/hyperapp/pull/612)。
 
 ```jsx
 import { h } from "hyperapp"
@@ -388,11 +385,11 @@ export const Jumbotron = ({ text }) => (
 
 ### 生命周期事件（Events)
 
-You can be notified when elements managed by the virtual DOM are created, updated or removed via lifecycle events. Use them for animation, data fetching, wrapping third party libraries, cleaning up resources, etc.
+当通过生命周期事件创建、更新或删除虚拟 DOM 管理的元素时，您可以得到通知。将它们用于动画、数据获取、包装第三方库、清理资源等。
 
 #### oncreate
 
-This event is fired after the element is created and attached to the DOM. Use it to manipulate the DOM node directly, make a network request, create a slide/fade in animation, etc.
+元素创建并附加到 DOM 后该事件被触发。用它直接操作 DOM 节点，发起网络请求，创建 `Slide/Fade in` 动画等等。
 
 ```jsx
 import { h } from "hyperapp"
@@ -408,7 +405,7 @@ export const Textbox = ({ placeholder }) => (
 
 #### onupdate
 
-This event is fired every time we update the element attributes. Use <samp>oldAttributes</samp> inside the event handler to check if any attributes changed or not.
+每次更新元素属性时触发，使用 <samp>oldAttributes</samp> 在事件处理时检查属性是否产生变化。
 
 ```jsx
 import { h } from "hyperapp"
@@ -428,7 +425,7 @@ export const Textbox = ({ placeholder }) => (
 
 #### onremove
 
-This event is fired before the element is removed from the DOM. Use it to create slide/fade out animations. Call <samp>done</samp> inside the function to remove the element. This event is not called in its child elements.
+在元素从 DOM 中删除前触发。 使用它来创建 `Slide/Fade out`动画。 调用 <samp>done</samp> 内部方法来删除元素。在它的子元素中，该方法将不被调用。
 
 ```jsx
 import { h } from "hyperapp"
@@ -442,7 +439,7 @@ export const MessageWithFadeout = ({ title }) => (
 
 #### ondestroy
 
-This event is fired after the element has been removed from the DOM, either directly or as a result of a parent being removed. Use it for invalidating timers, canceling a network request, removing global events listeners, etc.
+在元素从 DOM 中删除后触发， 直接或作为父级元素删除的结果。 用它来取消定时器、取消网络请求、移除全局事件侦听等。
 
 ```jsx
 import { h } from "hyperapp"
@@ -463,8 +460,7 @@ export const Camera = ({ onerror }) => (
 
 ### 标识符（Keys）
 
-Keys helps identify nodes every time we update the DOM. By setting the <samp>key</samp> property on a virtual node, you declare that the node should correspond to a particular DOM element. This allow us to re-order the element into its new position, if the position changed, rather than risk destroying it.
-
+通过对虚拟节点设定 <samp>key</samp> 属性，唯一确定一个 DOM 元素，您声明该节点应该对应于特定的DOM元素。这允许如果位置改变了我们将元素重新排列到它的新位置，而不是破坏它。
 ```jsx
 import { h } from "hyperapp"
 
@@ -476,7 +472,7 @@ export const ImageGallery = ({ images }) =>
   ))
 ```
 
-Keys must be unique among sibling-nodes. Don't use an array index as key, if the index also specifies the order of siblings. If the position and number of items in a list is fixed, it will make no difference, but if the list is dynamic, the key will change every time the tree is rebuilt.
+同级节点之间的标识符必须是唯一的。如果索引指定兄弟的顺序，则不要使用数组索引作为标识符。如果列表中的项的位置和数量是固定的，则不会有任何差别，但是如果列表是动态的，那么每次重建树时标识符都会发生变化。
 
 ```jsx
 import { h } from "hyperapp"

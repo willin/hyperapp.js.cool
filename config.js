@@ -20,7 +20,7 @@ function getReadState() {
 
 // Docsify 配置
 window.$docsify = {
-  name: '从0到1掌握HyperApp',
+  name: '从0到1掌握Hyperapp',
   repo: 'https://github.com/willin/hyperapp.js.cool.git',
   loadSidebar: true,
   subMaxLevel: 2,
