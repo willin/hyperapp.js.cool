@@ -1,6 +1,6 @@
 # <img height=24 src=https://cdn.rawgit.com/jorgebucaran/f53d2c00bafcf36e84ffd862f0dc2950/raw/882f20c970ff7d61aa04d44b92fc3530fa758bc0/Hyperapp.svg> Hyperapp
 
-> 本文翻译自 [Github](https://github.com/hyperapp/hyperapp) 项目主页介绍，后续章节针对一些特性及最佳实践进行展开介绍。
+> 本文翻译自 [Github](https://github.com/hyperapp/hyperapp) 项目 v1.1.2 主页介绍，后续章节针对一些特性及最佳实践进行展开介绍。
 
 Hyperapp 是一个构建 Web 应用的微型 JS 框架。
 
@@ -9,6 +9,7 @@ Hyperapp 是一个构建 Web 应用的微型 JS 框架。
 * **独立** — 麻雀虽小，五脏俱全。 Hyperapp 以一个虚拟 DOM 引擎来配合状态（State）管理，允许关键数据更新和生命周期事件（Events）——都无须额外依赖。
 
 <a name="getting-started" id="getting-started"></a>
+
 ## 起步
 
 我们的第一个示例代码是一个可增、减的计数器。 可以先试试[在线运行案例](https://codepen.io/hyperapp/pen/zNxZLP/left/?editors=0010)。
@@ -68,9 +69,9 @@ const view = (state, actions) =>
 
 使用 NPM 或者 Yarn 进行安装。
 
-<pre>
-npm i <a href=https://www.npmjs.com/package/hyperapp>hyperapp</a>
-</pre>
+```bash
+npm i hyperapp
+```
 
 然后使用模块打包工具（如：[Rollup](https://rollupjs.org) 或 [Webpack](https://webpack.js.org)），像你使用其他模块一样。
 
@@ -91,6 +92,7 @@ Hyperapp 应用由三个内部关联的部分组成： [状态（State）](#stat
 当初始化后，你的应用就会连续循环运行下去，执行用户或外部事件的动作，更新状态，通过虚拟 DOM 模型呈现改变到视图上。把动作看做一个信号，通知 Hyperapp 更新状态，计划下一次视图的重绘。在处理一个动作之后，一个新的状态会被返回给用户。
 
 <a name="state" id="state"></a>
+
 ### 状态（State）
 
 状态（State）是一个描述你整个程序的 JS 对象。它包含了应用内执行过程中变化的整个动态数据。状态一旦创建，不能被转变，我们必须通过动作（Actions）来更新它。
@@ -115,6 +117,7 @@ const state = {
 ```
 
 <a name="actions" id="actions"></a>
+
 ### 动作（Actions）
 
 改变状态的方法是通过动作。一个动作是一个（接受一个参数的）一元方法。这个参数（Payload）可以是你想传给动作的任何东西。
@@ -158,6 +161,7 @@ const actions = {
 ```
 
 <a name="nested-actions" id="nested-actions"></a>
+
 #### 嵌套动作
 
 动作可以在命名空间（Namespaces）中进行嵌套。深度更新嵌套对象只需要在声明动作时使用相同路径到你希望更新的状态上即可。
@@ -191,6 +195,7 @@ setInterval(main.down, 500, 1)
 ```
 
 <a name="view" id="view"></a>
+
 ### 视图
 
 每次应用状态更改时，视图方法会被调用，因此你可以指定 DOM 节点变成你期望的样子。视图用 js 对象形式返回你定义的虚拟 DOM， Hyperapp 来掌管更新匹配的实际 DOM。
@@ -237,6 +242,7 @@ export const view = (state, actions) =>
 可能看上去每次更新时丢弃虚拟 DOM 并整体重建是一种浪费，但没提到的是，实际上在任何时间， Hyperapp 同时在内存中维护两个虚拟 DOM 树，而且事实上，浏览器可以很快的创建成百上千的对象。 另一方面，修改 DOM 的代价要高出几个数量级。
 
 <a name="mounting" id="mouting"></a>
+
 ### 挂载
 
 在页面上挂载你的应用需要一个 DOM 元素。这个元素会被当做应用的容器。 Hyperapp 应用始终需要一个单一的容器挂载。ntainer. Applications built with Hyperapp always have a single container.
