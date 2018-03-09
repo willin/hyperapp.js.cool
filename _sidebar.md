@@ -1,5 +1,5 @@
 - [版权](COPYRIGHT.md)
-- 基础
+- [基础](basic/README.md)
   - [解构赋值](basic/destructuring.md)
   - [Module语法](basic/module.md)
 - HyperApp

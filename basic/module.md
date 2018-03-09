@@ -3,7 +3,9 @@
 本章节主要讲 `require / module.exports` 及 `import / export` 的区别。
 
 
-## `export default` 的优势
+## `export / import` 的优势
+
+### 可以 `export default`
 
 ```js
 // test.js
@@ -28,7 +30,7 @@ module.exports.test2 = 2;
 
 ## `require` 的优势
 
-可以配合结构赋值：
+### 可以配合结构赋值
 
 ```js
 // test.js
