@@ -3,6 +3,7 @@
   - [解构赋值](basic/destructuring.md)
   - [Module语法](basic/module.md)
 - [Hyperapp](hyperapp/README.md)
+  - [视图及组件](hyperapp/components.md)
 - FX
 - 路由 Router
 - 国际化 i18n
