@@ -29,7 +29,10 @@ window.$docsify = {
   auto2top: true,
   alias: {
     '/basic/_sidebar.md': '/_sidebar.md',
-    '/hyperapp/_sidebar.md': '/_sidebar.md'
+    '/hyperapp/_sidebar.md': '/_sidebar.md',
+    '/fx/_sidebar.md': '/_sidebar.md',
+    '/i18n/_sidebar.md': '/_sidebar.md',
+    '/router/_sidebar.md': '/_sidebar.md'
   },
   search: {
     placeholder: '搜索',

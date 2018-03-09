@@ -1,7 +1,7 @@
 {
   "name": "hyperapp.js.cool",
   "description": "从0到1掌握Hyperapp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "config.js",
   "scripts": {
     "start": "docsify serve . --port 3456 --open"
