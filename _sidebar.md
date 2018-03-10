@@ -7,5 +7,8 @@
 - [FX](fx/README.md)
   - [fxIf](fx/fxif.md)
   - [http](fx/http.md)
+  - [graphql(封装)](fx/graphql.md)
 - [路由 Router](router/README.md)
+  - State传递
 - [国际化 i18n](i18n/README.md)
+  - 动态加载
