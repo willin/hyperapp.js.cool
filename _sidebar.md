@@ -6,5 +6,6 @@
   - [视图及组件](hyperapp/components.md)
 - [FX](fx/README.md)
   - [fxIf](fx/fxif.md)
+  - [http](fx/http.md)
 - [路由 Router](router/README.md)
 - [国际化 i18n](i18n/README.md)
