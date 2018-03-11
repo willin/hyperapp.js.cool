@@ -48,6 +48,8 @@ App.js 使用基本保持不变：
 ```js
 // app.js
 import { app, h } from 'hyperapp';
+// 添加 FX
+import { withFx } from '@hyperapp/fx';
 import * as i18n from './i18n';
 
 const state = {
@@ -64,7 +66,7 @@ const view = ({ i18n: { messages, locale } }) => (
   </div>
 );
 
-const main = app(state, actions, view, document.body);
+const main = withFx(app)(state, actions, view, document.body);
 // 使用新的 load 方法异步加载
 main.i18n.load('en-US');
 ```
