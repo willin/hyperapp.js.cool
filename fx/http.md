@@ -34,6 +34,30 @@ mr.post({
 
 可以将这个库封装为一个效果（类似于 Action）。
 
+```js
+import mr from '@airx/request';
+import { action } from '@hyperapp/fx';
+
+export const http = (url, handler, {
+  method: 'GET',
+  error: '',
+  ...args
+}={}) => {
+  return mr[method]({
+    url,
+    ...args
+  })
+  .then(data=> action(handler, data))
+  .catch(err=> {
+    if(error !== '') {
+      return action(error, err);
+    }
+  });
+}
+```
+
+大致应该是这样，上面这一段是凭感觉写的，不确定对不对。实际使用的时候注意测试一下。
+
 ---
 
 p.s.
