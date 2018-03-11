@@ -5,7 +5,7 @@
 ```js
 // i18n.js
 import i18n from 'hyperapp-i18n';
-import { action, http} from '@hyperapp/fx';
+import { http } from '@hyperapp/fx';
 
 const { state, actions } = i18n({
   'zh-CN': {
