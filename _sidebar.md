@@ -9,6 +9,6 @@
   - [http](fx/http.md)
   - [graphql(封装)](fx/graphql.md)
 - [路由 Router](router/README.md)
-  - State传递
+  - [State传递](router/state.md)
 - [国际化 i18n](i18n/README.md)
-  - 动态加载
+  - [动态加载](i18n/dynamic.md)
